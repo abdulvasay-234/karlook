@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DiscoveryHero from '../../components/common/DiscoveryHero.astro';
+import StructuredData from '../../components/common/StructuredData.astro';
+import Container from '../../components/common/Container.astro';
+import DestinationCard from '../../components/services/DestinationCard.astro';
+import { destinations } from '../../data/destinations';
+import { breadcrumbSchema } from '../../lib/seo/structured';
+import { pathFor } from '../../lib/paths';
+import '../../styles/home.css';
+import '../../styles/fleet.css';
+import '../../styles/discovery.css';
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Destinations', href: '/destinations/' },
+];
+---
+
+<BaseLayout
+  title="Melbourne Destinations"
+  description="Explore proposed chauffeur journey areas across Melbourne, subject to service confirmation."
+  image="/images/melbourne-yarra.jpg"
+  imageAlt="Melbourne skyline and the Yarra River"
+>
+  <StructuredData data={breadcrumbSchema(Astro.site, crumbs)} />
+  <DiscoveryHero
+    image="/images/melbourne-yarra.jpg"
+    alt="Melbourne skyline and the Yarra River"
+    eyebrow="THE PLACES WE LOVE"
+    title="Melbourne, and every journey beyond."
+    description="From city streets to the waterfront, explore the places that make Melbourne distinctive."
+    bookingHref={pathFor('/booking/')}
+    crumbs={[{ name: 'Home', href: '/' }, { name: 'Destinations' }]}
+  />
+  <section class="discovery-section">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> MELBOURNE &amp; BEYOND
+          </p>
+          <h2>
+            A city of
+            <br />
+            <em>possibilities.</em>
+          </h2>
+        </div>
+        <p>
+          Discover neighbourhoods and places to consider for your next journey.
+        </p>
+      </div>
+      <p class="discovery-note">
+        Areas marked proposed are not confirmed. Service availability is always
+        subject to confirmation.
+      </p>
+      <div class="discovery-grid">
+        {destinations.map((destination) => (
+          <DestinationCard destination={destination} />
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+<script>
+  import '../../scripts/reveal';
+</script>

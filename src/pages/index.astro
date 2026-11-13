@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/common/Button.astro';
+import Container from '../components/common/Container.astro';
+import BookingWidget from '../components/booking/BookingWidget';
+import { destinations, faqs, fleet, services } from '../data/home';
+import { pathFor } from '../lib/paths';
+import { imageAttributes } from '../lib/images';
+import '../styles/home.css';
+---
+
+<BaseLayout
+  title="Luxury Chauffeur Melbourne"
+  description="Explore karLook's proposed chauffeur services and private transfers in Melbourne, with enquiries subject to manual confirmation."
+>
+  <section class="home-hero" aria-labelledby="hero-title">
+    <img
+      {...imageAttributes(pathFor('/images/chauffeur-hero.jpg'))}
+      alt="Illustrative luxury sedan"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+    <div class="home-hero-shade"></div>
+    <Container class="home-hero-content">
+      <p class="eyebrow hero-eyebrow">
+        <span></span> THE ART OF GETTING THERE
+      </p>
+      <h1 id="hero-title">
+        Melbourne,
+        <br />
+        <em>Experienced Differently.</em>
+      </h1>
+      <p>
+        Premium chauffeur services and private transfers, designed around your
+        journey.
+      </p>
+      <div class="home-hero-actions">
+        <Button href="#plan">Request a Booking</Button>
+        <a class="text-link light-link" href="#fleet">
+          Explore Our Fleet <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+    <div class="home-hero-caption container">
+      <span>MELBOURNE, AUSTRALIA</span>
+      <span>THE JOURNEY IS EVERYTHING &nbsp; &#8595;</span>
+    </div>
+  </section>
+
+  <section class="booking-section" id="plan" aria-label="Plan your journey">
+    <Container>
+      <BookingWidget bookingHref={pathFor('/booking/')} client:load />
+    </Container>
+  </section>
+
+  <section class="value-strip" aria-label="The karLook experience">
+    <Container class="value-grid">
+      <div data-reveal="up" data-reveal-stagger>
+        <span>01</span>
+        <p>
+          Premium chauffeur
+          <br />
+          experience
+        </p>
+      </div>
+      <div data-reveal="up" data-reveal-stagger>
+        <span>02</span>
+        <p>
+          Carefully selected
+          <br />
+          vehicles
+        </p>
+      </div>
+      <div data-reveal="up" data-reveal-stagger>
+        <span>03</span>
+        <p>
+          Professional
+          <br />
+          service
+        </p>
+      </div>
+      <div data-reveal="up" data-reveal-stagger>
+        <span>04</span>
+        <p>
+          Personalised
+          <br />
+          journeys
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="fleet-section home-section" id="fleet">
+    <Container>
+      <div class="home-heading">
+        <div data-reveal="up" data-reveal-stagger>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> THE COLLECTION
+          </p>
+          <h2>
+            Find your kind
+            <br />
+            <em>of journey.</em>
+          </h2>
+        </div>
+        <div data-reveal="up" data-reveal-stagger>
+          <p>Thoughtful spaces for every kind of arrival.</p>
+          <a class="text-link dark-link" href={pathFor('/fleet/')}>
+            Explore our fleet <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+      <p class="sample-note">
+        Illustrative fleet and capacities only. Actual vehicles and availability
+        are yet to be confirmed.
+      </p>
+      <div class="fleet-grid">
+        {fleet.map((vehicle) => (
+          <article class="fleet-card" data-reveal="up" data-reveal-stagger>
+            <a
+              class="fleet-image"
+              href={pathFor(`/fleet/${vehicle.slug}/`)}
+              aria-label={`View ${vehicle.name}`}
+            >
+              <img
+                {...imageAttributes(pathFor(vehicle.image))}
+                alt={`Illustrative ${vehicle.name}`}
+                loading="lazy"
+                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+              />
+            </a>
+            <div class="fleet-card-info">
+              <p class="card-kicker">{vehicle.category}</p>
+              <h3>{vehicle.name}</h3>
+              <div class="fleet-meta">
+                <span>
+                  Illustrative capacity: {vehicle.passengers} passengers
+                </span>
+                <a href={pathFor(`/fleet/${vehicle.slug}/`)}>
+                  View Vehicle <span aria-hidden="true">&#8599;</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="services-section home-section">
+    <Container>
+      <div class="home-heading">
+        <div data-reveal="up" data-reveal-stagger>
+          <p class="eyebrow hero-eyebrow">
+            <span></span> THE WAY YOU TRAVEL
+          </p>
+          <h2>
+            For wherever
+            <br />
+            <em>life takes you.</em>
+          </h2>
+        </div>
+        <div data-reveal="up" data-reveal-stagger>
+          <p>
+            From important arrivals to the everyday, a more considered way to
+            move.
+          </p>
+          <a class="text-link light-link" href={pathFor('/services/')}>
+            Discover all services <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+      <p class="service-note">
+        Services shown are proposed and subject to confirmation.
+      </p>
+      <div class="services-grid">
+        {services.map((service) => (
+          <a
+            class="service-card"
+            href={pathFor(`/services/${service.slug}/`)}
+            data-reveal="up"
+            data-reveal-stagger
+          >
+            <img
+              {...imageAttributes(pathFor(service.image))}
+              alt=""
+              loading="lazy"
+              sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+            />
+            <div class="service-card-content">
+              <span>{service.number} / KARLOOK SERVICES</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <span class="service-arrow" aria-hidden="true">
+                &#8599;
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="why-section home-section">
+    <Container class="why-grid">
+      <div class="why-image" data-reveal="scale">
+        <img
+          {...imageAttributes(pathFor('/images/journey.jpg'))}
+          alt="A driver on a city journey"
+          loading="lazy"
+          sizes="(max-width: 600px) 100vw, 50vw"
+        />
+        <span>THE KARLOOK EXPERIENCE / MELBOURNE</span>
+      </div>
+      <div class="why-copy">
+        <p class="eyebrow dark-eyebrow" data-reveal="right" data-reveal-stagger>
+          <span></span> WHY KARLOOK
+        </p>
+        <h2 data-reveal="up" data-reveal-stagger>
+          Every journey deserves <em>a better experience.</em>
+        </h2>
+        <p data-reveal="up" data-reveal-stagger>
+          Travel should feel effortless. We believe the difference is in the
+          details: a comfortable space, a thoughtful approach and a journey
+          shaped around you.
+        </p>
+        <div class="why-values" data-reveal="up" data-reveal-stagger>
+          <div>
+            <strong>Comfort &amp; convenience</strong>
+            <span>Space to settle in and enjoy the ride.</span>
+          </div>
+          <div>
+            <strong>Personal attention</strong>
+            <span>Details considered with your journey in mind.</span>
+          </div>
+        </div>
+        <a
+          class="text-link dark-link"
+          href={pathFor('/about/')}
+          data-reveal="fade"
+          data-reveal-stagger
+        >
+          Discover karLook <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </section>
+
+  <section class="destination-section">
+    <div class="destination-photo">
+      <img
+        {...imageAttributes(pathFor('/images/melbourne-yarra.jpg'))}
+        alt="Melbourne skyline and Princes Bridge over the Yarra River"
+        loading="lazy"
+        sizes="(max-width: 900px) 100vw, 50vw"
+        data-reveal="scale"
+      />
+    </div>
+    <Container class="destination-content">
+      <p class="eyebrow hero-eyebrow" data-reveal="right" data-reveal-stagger>
+        <span></span> THE PLACES WE LOVE
+      </p>
+      <h2 data-reveal="up" data-reveal-stagger>
+        Melbourne,
+        <br />
+        <em>and beyond.</em>
+      </h2>
+      <p data-reveal="up" data-reveal-stagger>
+        From city streets to airport arrivals, discover the places that make
+        Melbourne yours.
+      </p>
+      <p class="destination-note">
+        Proposed destinations. Service areas are yet to be confirmed.
+      </p>
+      <div class="destination-list" data-reveal="up">
+        {destinations.map((destination) => (
+          <a href={`${pathFor('/destinations/')}#${destination.slug}`}>
+            {destination.name}
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="how-section home-section">
+    <Container>
+      <div class="home-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> A MORE CONSIDERED JOURNEY
+          </p>
+          <h2>
+            From plans
+            <br />
+            <em>to destination.</em>
+          </h2>
+        </div>
+        <p>How enquiries are intended to work once bookings open.</p>
+      </div>
+      <div class="steps-grid">
+        <div data-reveal="up" data-reveal-stagger>
+          <span>01</span>
+          <h3>Choose Your Journey</h3>
+          <p>Tell us where you are going and when.</p>
+        </div>
+        <div data-reveal="up" data-reveal-stagger>
+          <span>02</span>
+          <h3>Select Your Vehicle</h3>
+          <p>Share your vehicle preference, subject to availability.</p>
+        </div>
+        <div data-reveal="up" data-reveal-stagger>
+          <span>03</span>
+          <h3>Submit Your Request</h3>
+          <p>Send your details once enquiries open.</p>
+        </div>
+        <div data-reveal="up" data-reveal-stagger>
+          <span>04</span>
+          <h3>Receive Confirmation</h3>
+          <p>Requests will be reviewed and manually confirmed.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="faq-section home-section">
+    <Container class="faq-grid">
+      <div data-reveal="left">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> GOOD TO KNOW
+        </p>
+        <h2>
+          A little more
+          <br />
+          <em>clarity.</em>
+        </h2>
+        <p>Everything you need to know before your journey.</p>
+        <a class="text-link dark-link" href={pathFor('/faq/')}>
+          More information <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details data-reveal="up" data-reveal-stagger>
+            <summary>
+              {faq.question}
+              <span aria-hidden="true">+</span>
+            </summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="final-cta">
+    <Container class="final-cta-content">
+      <p class="eyebrow hero-eyebrow" data-reveal="up" data-reveal-stagger>
+        <span></span> THE JOURNEY AHEAD
+      </p>
+      <h2 data-reveal="up" data-reveal-stagger>
+        Your Journey.
+        <br />
+        <em>Our Priority.</em>
+      </h2>
+      <p data-reveal="up" data-reveal-stagger>
+        Discover a more comfortable way to travel around Melbourne.
+      </p>
+      <div data-reveal="up" data-reveal-stagger>
+        <Button href="#plan">Request Your Booking</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+
+<script>
+  import '../scripts/reveal';
+</script>

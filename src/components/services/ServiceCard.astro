@@ -1,0 +1,35 @@
+---
+import type { Service } from '../../data/services';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+interface Props {
+  service: Service;
+  index: number;
+}
+const { service, index } = Astro.props;
+---
+
+<article class="discovery-card" data-reveal="up" data-reveal-stagger>
+  <a
+    class="discovery-card-image"
+    href={pathFor(`/services/${service.slug}/`)}
+    aria-label={`Explore ${service.title}`}
+  >
+    <img
+      {...imageAttributes(pathFor(service.heroImage))}
+      alt={service.heroAlt}
+      loading="lazy"
+      sizes="(max-width: 600px) 100vw, 50vw"
+    />
+  </a>
+  <div class="discovery-card-info">
+    <p class="discovery-card-index">
+      {String(index + 1).padStart(2, '0')} / KARLOOK SERVICES
+    </p>
+    <h3>{service.title}</h3>
+    <p>{service.description}</p>
+    <a class="text-link dark-link" href={pathFor(`/services/${service.slug}/`)}>
+      Explore service <span aria-hidden="true">&#8599;</span>
+    </a>
+  </div>
+</article>

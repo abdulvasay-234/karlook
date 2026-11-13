@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DiscoveryHero from '../../components/common/DiscoveryHero.astro';
+import DiscoveryFaq from '../../components/common/DiscoveryFaq.astro';
+import StructuredData from '../../components/common/StructuredData.astro';
+import Container from '../../components/common/Container.astro';
+import Button from '../../components/common/Button.astro';
+import ServiceCard from '../../components/services/ServiceCard.astro';
+import { publishedDestinations } from '../../data/destinations';
+import { publishedServices } from '../../data/services';
+import { publishedVehicles } from '../../data/vehicles';
+import { breadcrumbSchema } from '../../lib/seo/structured';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+import '../../styles/home.css';
+import '../../styles/fleet.css';
+import '../../styles/discovery.css';
+
+export function getStaticPaths() {
+  return publishedDestinations.map((destination) => ({
+    params: { destination: destination.slug },
+    props: { destination },
+  }));
+}
+const { destination } = Astro.props;
+const bookingHref = `${pathFor('/booking/')}?destination=${encodeURIComponent(destination.slug)}`;
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Destinations', href: '/destinations/' },
+  { name: destination.name, href: `/destinations/${destination.slug}/` },
+];
+const services = publishedServices.filter((service) =>
+  destination.relatedServices.includes(service.slug),
+);
+const fleet = publishedVehicles.filter((vehicle) =>
+  destination.fleetIds.includes(vehicle.id),
+);
+const related = publishedDestinations.filter((area) =>
+  destination.relatedDestinations.includes(area.slug),
+);
+---
+
+<BaseLayout
+  title={destination.seoTitle}
+  description={destination.seoDescription}
+  image={destination.heroImage}
+  imageAlt={destination.heroAlt}
+>
+  <StructuredData data={breadcrumbSchema(Astro.site, crumbs)} />
+  <DiscoveryHero
+    image={destination.heroImage}
+    alt={destination.heroAlt}
+    eyebrow="MELBOURNE DESTINATIONS"
+    title={destination.title}
+    description={destination.description}
+    bookingHref={bookingHref}
+    crumbs={[
+      { name: 'Home', href: '/' },
+      { name: 'Destinations', href: '/destinations/' },
+      { name: destination.name },
+    ]}
+  />
+  <section class="discovery-section discovery-intro">
+    <Container class="discovery-split">
+      <div data-reveal="up">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> {destination.name.toUpperCase()}
+        </p>
+        <h2>{destination.introduction}</h2>
+      </div>
+      <div data-reveal="up">
+        <p>{destination.context}</p>
+        <p class="discovery-note">
+          Journey requests require manual confirmation. Vehicle examples are
+          illustrative.
+        </p>
+        <a class="text-link dark-link" href={bookingHref}>
+          Plan this journey <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-section discovery-fleet">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> VEHICLE PREFERENCES
+          </p>
+          <h2>
+            A considered
+            <br />
+            <em>way to arrive.</em>
+          </h2>
+        </div>
+        <p>Illustrative vehicle categories, not confirmed inventory.</p>
+      </div>
+      <div class="recommendation-grid">
+        {fleet.map((vehicle) => (
+          <a
+            href={pathFor(`/fleet/${vehicle.slug}/`)}
+            data-reveal="up"
+            data-reveal-stagger
+          >
+            <img
+              {...imageAttributes(pathFor(vehicle.heroImage))}
+              alt={`Illustrative ${vehicle.name}`}
+              loading="lazy"
+              sizes="(max-width: 600px) 100vw, 33vw"
+            />
+            <span>{vehicle.category} / ILLUSTRATIVE</span>
+            <h3>{vehicle.name}</h3>
+            <span class="recommendation-link">View vehicle &#8599;</span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-section discovery-faq">
+    <Container class="faq-grid">
+      <div data-reveal="left">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> GOOD TO KNOW
+        </p>
+        <h2>
+          Before
+          <br />
+          <em>you go.</em>
+        </h2>
+      </div>
+      <DiscoveryFaq faqs={destination.faqs} />
+    </Container>
+  </section>
+  <section class="discovery-section">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> EXPLORE MORE
+          </p>
+          <h2>
+            Journeys to
+            <br />
+            <em>consider.</em>
+          </h2>
+        </div>
+        <div class="area-links">
+          {related.map((area) => (
+            <a href={pathFor(`/destinations/${area.slug}/`)}>
+              {area.name} &#8599;
+            </a>
+          ))}
+        </div>
+      </div>
+      <div class="discovery-grid related-grid">
+        {services.map((service, index) => (
+          <ServiceCard service={service} index={index} />
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-cta">
+    <Container data-reveal="up">
+      <p class="eyebrow hero-eyebrow">
+        <span></span> YOUR NEXT JOURNEY
+      </p>
+      <h2>
+        Arrive
+        <br />
+        <em>beautifully.</em>
+      </h2>
+      <p>Share your journey preferences. No booking is confirmed online.</p>
+      <Button href={bookingHref}>Request a Booking</Button>
+    </Container>
+  </section>
+</BaseLayout>
+<script>
+  import '../../scripts/reveal';
+</script>

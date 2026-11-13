@@ -1,0 +1,75 @@
+---
+import { business, displayAddress, navigation } from '../../data/site';
+import { services } from '../../data/home';
+import { pathFor } from '../../lib/paths';
+const { phone, email, whatsapp } = business.contact;
+const address = displayAddress();
+const socialLinks = Object.entries(business.social).filter(([, url]) => url);
+---
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <a class="wordmark" href={pathFor('/')} aria-label="karLook home">
+        kar<span>Look</span>
+        <i>.</i>
+      </a>
+      <p>
+        Thoughtful journeys.
+        <br />A distinctly Melbourne experience.
+      </p>
+    </div>
+    <div class="footer-column">
+      <p class="footer-label">Explore</p>
+      <nav aria-label="Footer navigation">
+        {navigation.map((item) => (
+          <a href={pathFor(item.href)}>{item.label}</a>
+        ))}
+      </nav>
+    </div>
+    <div class="footer-column">
+      <p class="footer-label">Our services</p>
+      <nav aria-label="Services">
+        {services.map((service) => (
+          <a href={pathFor(`/services/${service.slug}/`)}>{service.title}</a>
+        ))}
+      </nav>
+    </div>
+    <div class="footer-column footer-contact">
+      <p class="footer-label">Get in touch</p>
+      <p>
+        Melbourne, Victoria
+        <br />
+        Australia
+        <br />
+        <small>Proposed service area</small>
+      </p>
+      {phone && <a href={`tel:${phone.replace(/[^+\d]/g, '')}`}>{phone}</a>}
+      {email && <a href={`mailto:${email}`}>{email}</a>}
+      {whatsapp && (
+        <a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`}>
+          WhatsApp &#8599;
+        </a>
+      )}
+      {address && <p>{address}</p>}
+      <a href={pathFor('/contact/')}>Contact us &#8599;</a>
+      {socialLinks.length > 0 && (
+        <nav aria-label="Social media">
+          {socialLinks.map(([name, url]) => (
+            <a href={url}>{name}</a>
+          ))}
+        </nav>
+      )}
+      {socialLinks.length === 0 && <p>Social profiles to be announced.</p>}
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>
+      &copy; {new Date().getFullYear()} {business.name}. All rights reserved.
+    </span>
+    <span>Melbourne, Australia</span>
+    <a href={pathFor('/faq/')}>FAQ</a>
+    <a href={pathFor('/legal/privacy/')}>Privacy</a>
+    <a href={pathFor('/legal/terms/')}>Terms</a>
+  </div>
+</footer>

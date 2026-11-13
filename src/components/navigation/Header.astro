@@ -1,0 +1,30 @@
+---
+import { navigation } from '../../data/site';
+import { pathFor } from '../../lib/paths';
+import MobileNav from './MobileNav';
+import Button from '../common/Button.astro';
+const links = navigation.map((item) => ({ ...item, href: pathFor(item.href) }));
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="wordmark" href={pathFor('/')} aria-label="karLook home">
+      kar<span>Look</span>
+      <i>.</i>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={Astro.url.pathname === link.href ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <Button href={pathFor('/booking/')} class="header-book">
+      Book now
+    </Button>
+    <MobileNav links={links} bookingHref={pathFor('/booking/')} client:load />
+  </div>
+</header>

@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/common/Button.astro';
+import Container from '../../components/common/Container.astro';
+import VehicleGallery from '../../components/fleet/VehicleGallery';
+import { publishedVehicles } from '../../data/vehicles';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+import StructuredData from '../../components/common/StructuredData.astro';
+import { breadcrumbSchema } from '../../lib/seo/structured';
+import '../../styles/home.css';
+import '../../styles/fleet.css';
+
+export function getStaticPaths() {
+  return publishedVehicles.map((vehicle) => ({
+    params: { vehicle: vehicle.slug },
+    props: { vehicle },
+  }));
+}
+const { vehicle } = Astro.props;
+const requestHref = `${pathFor('/booking/')}?vehicle=${encodeURIComponent(vehicle.id)}`;
+const gallery = vehicle.gallery.map((image) => ({
+  ...image,
+  src: pathFor(image.src),
+}));
+const journeySlugs: Record<string, string> = {
+  'Airport transfers': 'airport-transfers',
+  'Corporate travel': 'corporate-chauffeur',
+  'Private transfers': 'point-to-point',
+  'Special occasions': 'wedding-transportation',
+};
+---
+
+<BaseLayout
+  title={vehicle.seoTitle}
+  description={vehicle.seoDescription}
+  image={vehicle.heroImage}
+  imageAlt={vehicle.gallery[0]?.alt ?? `Illustrative ${vehicle.name}`}
+  robots={vehicle.demonstration ? 'noindex, follow' : undefined}
+>
+  <StructuredData
+    data={breadcrumbSchema(Astro.site, [
+      { name: 'Home', href: '/' },
+      { name: 'Our Fleet', href: '/fleet/' },
+      { name: vehicle.name, href: `/fleet/${vehicle.slug}/` },
+    ])}
+  />
+  <section class="vehicle-hero">
+    <img
+      {...imageAttributes(pathFor(vehicle.heroImage))}
+      alt={`Illustrative ${vehicle.name}`}
+      fetchpriority="high"
+      sizes="100vw"
+    />
+    <div class="fleet-hero-shade"></div>
+    <Container class="vehicle-hero-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={pathFor('/')}>Home</a>
+        <span aria-hidden="true">/</span>
+        <a href={pathFor('/fleet/')}>Our Fleet</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{vehicle.name}</span>
+      </nav>
+      <p class="eyebrow hero-eyebrow">
+        <span></span> {vehicle.category} / ILLUSTRATIVE
+      </p>
+      <h1>{vehicle.name}</h1>
+      <p>{vehicle.description}</p>
+      <div class="vehicle-hero-meta">
+        <span>{vehicle.passengers} passengers</span>
+        <span>{vehicle.luggage} bags</span>
+        <span>Illustrative capacity</span>
+      </div>
+      <Button href={requestHref}>Request This Vehicle</Button>
+    </Container>
+  </section>
+  <section class="vehicle-intro fleet-detail-section">
+    <Container class="vehicle-intro-grid">
+      <div data-reveal="up">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> THE DETAILS
+        </p>
+        <h2>
+          A little more
+          <br />
+          <em>room to arrive.</em>
+        </h2>
+      </div>
+      <div data-reveal="up">
+        <p>{vehicle.description}</p>
+        <p class="vehicle-disclaimer">
+          This vehicle, its images, capacities and features are illustrative
+          examples, not confirmed inventory or specifications. Actual options
+          and availability remain to be confirmed.
+        </p>
+      </div>
+    </Container>
+  </section>
+  <section class="gallery-section fleet-detail-section">
+    <Container>
+      <div class="detail-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> A CLOSER LOOK
+          </p>
+          <h2>The journey, in view.</h2>
+        </div>
+        <p>
+          {gallery.some((image) => image.alt.includes('interior'))
+            ? 'Illustrative imagery. Interior photographs are not model-specific.'
+            : 'Illustrative exterior photography.'}
+        </p>
+      </div>
+      <div data-reveal="scale">
+        <VehicleGallery images={gallery} client:load />
+      </div>
+    </Container>
+  </section>
+  <section class="spec-section fleet-detail-section">
+    <Container class="spec-grid">
+      <div data-reveal="left">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> VEHICLE PROFILE
+        </p>
+        <h2>
+          Consider the
+          <br />
+          <em>details.</em>
+        </h2>
+        <p>Example capacities and features are shown for planning only.</p>
+      </div>
+      <dl class="spec-list" data-reveal="up">
+        <div>
+          <dt>Category</dt>
+          <dd>{vehicle.category}</dd>
+        </div>
+        <div>
+          <dt>Passengers</dt>
+          <dd>{vehicle.passengers} illustrative</dd>
+        </div>
+        <div>
+          <dt>Luggage</dt>
+          <dd>{vehicle.luggage} bags illustrative</dd>
+        </div>
+        <div>
+          <dt>Comfort</dt>
+          <dd>{vehicle.comfortFeatures.join(', ')}</dd>
+        </div>
+        <div>
+          <dt>Amenities</dt>
+          <dd>{vehicle.amenities.join(', ')}</dd>
+        </div>
+      </dl>
+    </Container>
+  </section>
+  <section class="ideal-section fleet-detail-section">
+    <Container>
+      <div class="detail-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow hero-eyebrow">
+            <span></span> THE JOURNEYS
+          </p>
+          <h2>
+            Made for the
+            <br />
+            <em>moments ahead.</em>
+          </h2>
+        </div>
+        <p>Possible journeys, subject to service confirmation.</p>
+      </div>
+      <div class="ideal-grid">
+        {vehicle.suitableJourneys.map((journey, index) => (
+          <a
+            href={pathFor(`/services/${journeySlugs[journey]}/`)}
+            data-reveal="up"
+            data-reveal-stagger
+          >
+            <span>0{index + 1}</span>
+            <h3>{journey}</h3>
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section class="vehicle-cta">
+    <Container>
+      <p class="eyebrow hero-eyebrow">
+        <span></span> YOUR NEXT JOURNEY
+      </p>
+      <h2>
+        Make this your
+        <br />
+        <em>next journey.</em>
+      </h2>
+      <p>
+        Share your preference when you plan your journey. No booking is
+        confirmed online.
+      </p>
+      <Button href={requestHref}>Request This Vehicle</Button>
+      <a class="text-link light-link" href={pathFor('/fleet/')}>
+        Explore the collection <span aria-hidden="true">&#8599;</span>
+      </a>
+    </Container>
+  </section>
+</BaseLayout>
+<script>
+  import '../../scripts/reveal';
+</script>

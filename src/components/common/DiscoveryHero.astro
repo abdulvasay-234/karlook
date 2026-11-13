@@ -1,0 +1,56 @@
+---
+import Button from './Button.astro';
+import Container from './Container.astro';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+interface Props {
+  image: string;
+  alt: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  bookingHref: string;
+  crumbs: { name: string; href?: string }[];
+  cta?: string;
+}
+const {
+  image,
+  alt,
+  eyebrow,
+  title,
+  description,
+  bookingHref,
+  crumbs,
+  cta = 'Request a Booking',
+} = Astro.props;
+---
+
+<section class="discovery-hero">
+  <img
+    {...imageAttributes(pathFor(image))}
+    alt={alt}
+    sizes="100vw"
+    fetchpriority="high"
+  />
+  <div class="fleet-hero-shade"></div>
+  <Container class="discovery-hero-content">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      {crumbs.map((crumb, index) => (
+        <>
+          {index > 0 && <span aria-hidden="true">/</span>}
+          {crumb.href ? (
+            <a href={pathFor(crumb.href)}>{crumb.name}</a>
+          ) : (
+            <span aria-current="page">{crumb.name}</span>
+          )}
+        </>
+      ))}
+    </nav>
+    <p class="eyebrow hero-eyebrow">
+      <span></span> {eyebrow}
+    </p>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <Button href={bookingHref}>{cta}</Button>
+  </Container>
+</section>

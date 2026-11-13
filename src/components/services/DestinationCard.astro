@@ -1,0 +1,57 @@
+---
+import type { Destination } from '../../data/destinations';
+import { publishedServices } from '../../data/services';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+interface Props {
+  destination: Destination;
+}
+const { destination } = Astro.props;
+const detailHref =
+  destination.active && destination.published
+    ? pathFor(`/destinations/${destination.slug}/`)
+    : undefined;
+const bookingHref = `${pathFor('/booking/')}?destination=${encodeURIComponent(destination.slug)}`;
+const related = publishedServices.filter((service) =>
+  destination.relatedServices.includes(service.slug),
+);
+---
+
+<article
+  class="discovery-card destination-card"
+  id={destination.slug}
+  data-reveal="up"
+  data-reveal-stagger
+>
+  <div class="discovery-card-image">
+    <img
+      {...imageAttributes(pathFor(destination.heroImage))}
+      alt={destination.heroAlt}
+      loading="lazy"
+      sizes="(max-width: 600px) 100vw, 50vw"
+    />
+  </div>
+  <div class="discovery-card-info">
+    <p class="discovery-card-index">
+      {detailHref ? 'EXPLORE MELBOURNE' : 'PROPOSED AREA / MELBOURNE'}
+    </p>
+    <h3>{destination.name}</h3>
+    <p>{destination.description}</p>
+    <div class="destination-card-services">
+      <span>Related journeys</span>
+      {related.map((service) => (
+        <a href={pathFor(`/services/${service.slug}/`)}>{service.title}</a>
+      ))}
+    </div>
+    <div class="discovery-card-actions">
+      {detailHref && (
+        <a class="text-link dark-link" href={detailHref}>
+          Explore area <span aria-hidden="true">&#8599;</span>
+        </a>
+      )}
+      <a class="text-link dark-link" href={bookingHref}>
+        Request a Booking <span aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+  </div>
+</article>

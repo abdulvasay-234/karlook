@@ -1,0 +1,48 @@
+{
+  "name": "karlook",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:booking": "node --test tests/booking.test.mjs",
+    "test:pricing": "node --test tests/pricing.test.mjs tests/routing.test.mjs",
+    "images:optimise": "node scripts/optimise-images.mjs",
+    "audit:seo": "node scripts/audit-seo.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@astrojs/react": "^7.1.8",
+    "@astrojs/sitemap": "^3.7.5",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/playfair-display": "^5.3.0",
+    "@js-temporal/polyfill": "^0.5.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.11",
+    "libphonenumber-js": "^1.13.16",
+    "lucide-react": "^1.72.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "parse5": "^8.1.1",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "sax": "^1.6.1",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2"
+  }
+}

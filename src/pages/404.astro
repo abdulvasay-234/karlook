@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/common/Button.astro';
+import Container from '../components/common/Container.astro';
+import { pathFor } from '../lib/paths';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you are looking for could not be found."
+  robots="noindex, follow"
+>
+  <section class="interior-hero">
+    <Container>
+      <p class="eyebrow hero-eyebrow">
+        <span></span> 404 / PAGE NOT FOUND
+      </p>
+      <h1>
+        Let's get you
+        <br />
+        <em>back on your way.</em>
+      </h1>
+    </Container>
+  </section>
+  <section class="interior-content section-pad">
+    <Container>
+      <p class="interior-body">The page you're looking for isn't here.</p>
+      <Button href={pathFor('/')} variant="secondary">
+        Return home
+      </Button>
+    </Container>
+  </section>
+</BaseLayout>

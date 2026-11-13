@@ -1,0 +1,314 @@
+{
+  "/images/airport.jpg": {
+    "width": 1400,
+    "height": 1120,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/airport-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/airport-1280.webp"
+      }
+    ]
+  },
+  "/images/bmw-7.jpg": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/bmw-7-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/bmw-7-1280.webp"
+      }
+    ]
+  },
+  "/images/bmw-x7.jpg": {
+    "width": 1400,
+    "height": 2100,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/bmw-x7-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/bmw-x7-1280.webp"
+      }
+    ]
+  },
+  "/images/chauffeur-hero.jpg": {
+    "width": 2000,
+    "height": 1126,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/chauffeur-hero-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/chauffeur-hero-1280.webp"
+      },
+      {
+        "width": 2000,
+        "path": "/images/optimised/chauffeur-hero-2000.webp"
+      }
+    ]
+  },
+  "/images/coach.jpg": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/coach-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/coach-1280.webp"
+      }
+    ]
+  },
+  "/images/docklands.jpg": {
+    "width": 1400,
+    "height": 933,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/docklands-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/docklands-1280.webp"
+      }
+    ]
+  },
+  "/images/hero.jpg": {
+    "width": 2200,
+    "height": 1467,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/hero-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/hero-1280.webp"
+      }
+    ]
+  },
+  "/images/journey.jpg": {
+    "width": 1200,
+    "height": 800,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/journey-640.webp"
+      },
+      {
+        "width": 1200,
+        "path": "/images/optimised/journey-1200.webp"
+      }
+    ]
+  },
+  "/images/melbourne-yarra.jpg": {
+    "width": 1400,
+    "height": 924,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/melbourne-yarra-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/melbourne-yarra-1280.webp"
+      }
+    ]
+  },
+  "/images/melbourne.jpg": {
+    "width": 1200,
+    "height": 800,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/melbourne-640.webp"
+      },
+      {
+        "width": 1200,
+        "path": "/images/optimised/melbourne-1200.webp"
+      }
+    ]
+  },
+  "/images/premium-suv.jpg": {
+    "width": 1200,
+    "height": 2133,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/premium-suv-640.webp"
+      },
+      {
+        "width": 1200,
+        "path": "/images/optimised/premium-suv-1200.webp"
+      }
+    ]
+  },
+  "/images/sedan-black.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/sedan-black-640.webp"
+      },
+      {
+        "width": 1000,
+        "path": "/images/optimised/sedan-black-1000.webp"
+      }
+    ]
+  },
+  "/images/sedan-executive.jpg": {
+    "width": 1000,
+    "height": 667,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/sedan-executive-640.webp"
+      },
+      {
+        "width": 1000,
+        "path": "/images/optimised/sedan-executive-1000.webp"
+      }
+    ]
+  },
+  "/images/sedan-luxury.jpg": {
+    "width": 1000,
+    "height": 1778,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/sedan-luxury-640.webp"
+      },
+      {
+        "width": 1000,
+        "path": "/images/optimised/sedan-luxury-1000.webp"
+      }
+    ]
+  },
+  "/images/sedan-silver.jpg": {
+    "width": 1000,
+    "height": 1250,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/sedan-silver-640.webp"
+      },
+      {
+        "width": 1000,
+        "path": "/images/optimised/sedan-silver-1000.webp"
+      }
+    ]
+  },
+  "/images/south-yarra.jpg": {
+    "width": 1400,
+    "height": 2488,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/south-yarra-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/south-yarra-1280.webp"
+      }
+    ]
+  },
+  "/images/southbank.jpg": {
+    "width": 1400,
+    "height": 1050,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/southbank-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/southbank-1280.webp"
+      }
+    ]
+  },
+  "/images/sprinter.jpg": {
+    "width": 1400,
+    "height": 2100,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/sprinter-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/sprinter-1280.webp"
+      }
+    ]
+  },
+  "/images/st-kilda.jpg": {
+    "width": 1400,
+    "height": 940,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/st-kilda-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/st-kilda-1280.webp"
+      }
+    ]
+  },
+  "/images/suv.jpg": {
+    "width": 1000,
+    "height": 667,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/suv-640.webp"
+      },
+      {
+        "width": 1000,
+        "path": "/images/optimised/suv-1000.webp"
+      }
+    ]
+  },
+  "/images/v-class.jpg": {
+    "width": 1280,
+    "height": 876,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/v-class-640.webp"
+      },
+      {
+        "width": 1280,
+        "path": "/images/optimised/v-class-1280.webp"
+      }
+    ]
+  },
+  "/images/van.jpg": {
+    "width": 1000,
+    "height": 667,
+    "variants": [
+      {
+        "width": 640,
+        "path": "/images/optimised/van-640.webp"
+      },
+      {
+        "width": 1000,
+        "path": "/images/optimised/van-1000.webp"
+      }
+    ]
+  }
+}

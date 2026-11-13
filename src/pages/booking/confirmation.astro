@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookingApp from '../../components/booking/BookingApp';
+import '../../styles/booking.css';
+---
+
+<BaseLayout
+  title="Enquiry Acknowledgement"
+  description="Review the status of your karLook enquiry."
+  robots="noindex, follow"
+>
+  <BookingApp confirmationOnly client:load />
+  <noscript>
+    <section class="interior-content section-pad">
+      <div class="container">
+        JavaScript is required to view enquiry details.
+      </div>
+    </section>
+  </noscript>
+</BaseLayout>

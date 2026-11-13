@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DiscoveryHero from '../../components/common/DiscoveryHero.astro';
+import DiscoveryFaq from '../../components/common/DiscoveryFaq.astro';
+import StructuredData from '../../components/common/StructuredData.astro';
+import Container from '../../components/common/Container.astro';
+import Button from '../../components/common/Button.astro';
+import ServiceCard from '../../components/services/ServiceCard.astro';
+import { publishedServices } from '../../data/services';
+import { serviceFaqs } from '../../data/service-faqs';
+import { destinations } from '../../data/destinations';
+import { publishedVehicles } from '../../data/vehicles';
+import { breadcrumbSchema, serviceSchema } from '../../lib/seo/structured';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+import '../../styles/home.css';
+import '../../styles/fleet.css';
+import '../../styles/discovery.css';
+
+export function getStaticPaths() {
+  return publishedServices.map((service) => ({
+    params: { service: service.slug },
+    props: { service },
+  }));
+}
+const { service } = Astro.props;
+const bookingHref = `${pathFor('/booking/')}?service=${encodeURIComponent(service.slug)}`;
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services/' },
+  { name: service.title, href: `/services/${service.slug}/` },
+];
+const fleet = publishedVehicles.filter((vehicle) =>
+  service.fleetIds.includes(vehicle.id),
+);
+const related = publishedServices.filter((item) =>
+  service.relatedServices.includes(item.slug),
+);
+const areas = destinations.filter((item) =>
+  service.relatedDestinations.includes(item.slug),
+);
+---
+
+<BaseLayout
+  title={service.seoTitle}
+  description={service.seoDescription}
+  image={service.heroImage}
+  imageAlt={service.heroAlt}
+>
+  <StructuredData
+    data={[
+      ...breadcrumbSchema(Astro.site, crumbs),
+      ...serviceSchema(Astro.site, service),
+    ]}
+  />
+  <DiscoveryHero
+    image={service.heroImage}
+    alt={service.heroAlt}
+    eyebrow={
+      service.verified ? 'CHAUFFEUR SERVICE' : 'PROPOSED CHAUFFEUR SERVICE'
+    }
+    title={service.headline}
+    description={service.description}
+    bookingHref={bookingHref}
+    cta={
+      service.slug === 'hourly-chauffeur' ||
+      service.slug === 'long-distance-transfers'
+        ? 'Request a Quote'
+        : 'Request a Booking'
+    }
+    crumbs={[
+      { name: 'Home', href: '/' },
+      { name: 'Services', href: '/services/' },
+      { name: service.title },
+    ]}
+  />
+  <section class="discovery-section discovery-intro">
+    <Container class="discovery-split">
+      <div data-reveal="up">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> {service.title.toUpperCase()}
+        </p>
+        <h2>{service.introduction}</h2>
+      </div>
+      <div data-reveal="up">
+        {service.details.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <p class="discovery-note">
+          {service.verified
+            ? 'Availability and arrangements require manual confirmation.'
+            : 'This service is proposed. Availability and arrangements require manual confirmation.'}
+        </p>
+        <a class="text-link dark-link" href={bookingHref}>
+          Plan this journey <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-band">
+    <Container class="discovery-band-grid">
+      <div data-reveal="scale">
+        <img
+          {...imageAttributes(pathFor(service.gallery[0] ?? service.heroImage))}
+          alt={service.heroAlt}
+          loading="lazy"
+          sizes="(max-width: 600px) 100vw, 50vw"
+        />
+      </div>
+      <div data-reveal="up">
+        <p class="eyebrow hero-eyebrow">
+          <span></span> THOUGHTFUL DETAILS
+        </p>
+        <h2>
+          Considered around
+          <br />
+          <em>your journey.</em>
+        </h2>
+        <ul class="feature-list">
+          {service.features.map((feature) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+        <p>All details are subject to discussion and confirmation.</p>
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-section">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> THE JOURNEY
+          </p>
+          <h2>
+            From enquiry
+            <br />
+            <em>to arrival.</em>
+          </h2>
+        </div>
+        <p>How a request is intended to work once enquiries open.</p>
+      </div>
+      <div class="discovery-steps">
+        {service.steps.map((step, index) => (
+          <div data-reveal="up" data-reveal-stagger>
+            <span>0{index + 1}</span>
+            <p>{step}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-section discovery-fleet">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> VEHICLE PREFERENCES
+          </p>
+          <h2>
+            Space for
+            <br />
+            <em>your plans.</em>
+          </h2>
+        </div>
+        <p>
+          Illustrative vehicle categories and capacities, not confirmed
+          inventory.
+        </p>
+      </div>
+      <div class="recommendation-grid">
+        {fleet.map((vehicle) => (
+          <a
+            href={pathFor(`/fleet/${vehicle.slug}/`)}
+            data-reveal="up"
+            data-reveal-stagger
+          >
+            <img
+              {...imageAttributes(pathFor(vehicle.heroImage))}
+              alt={`Illustrative ${vehicle.name}`}
+              loading="lazy"
+              sizes="(max-width: 600px) 100vw, 33vw"
+            />
+            <span>{vehicle.category} / ILLUSTRATIVE</span>
+            <h3>{vehicle.name}</h3>
+            <span class="recommendation-link">View vehicle &#8599;</span>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-section discovery-faq">
+    <Container class="faq-grid">
+      <div data-reveal="left">
+        <p class="eyebrow dark-eyebrow">
+          <span></span> GOOD TO KNOW
+        </p>
+        <h2>
+          Questions,
+          <br />
+          <em>considered.</em>
+        </h2>
+        <p>Useful details for planning this journey.</p>
+      </div>
+      <DiscoveryFaq faqs={serviceFaqs[service.slug] ?? []} />
+    </Container>
+  </section>
+  <section class="discovery-section">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> EXPLORE MORE
+          </p>
+          <h2>
+            More ways
+            <br />
+            <em>to travel.</em>
+          </h2>
+        </div>
+        <div>
+          <p>Related journeys and proposed places to explore.</p>
+          <div class="area-links">
+            {areas.map((area) => (
+              <a href={`${pathFor('/destinations/')}#${area.slug}`}>
+                {area.name} &#8599;
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="discovery-grid related-grid">
+        {related.map((item, index) => (
+          <ServiceCard service={item} index={index} />
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section class="discovery-cta">
+    <Container data-reveal="up">
+      <p class="eyebrow hero-eyebrow">
+        <span></span> THE JOURNEY AHEAD
+      </p>
+      <h2>
+        Let's plan
+        <br />
+        <em>your journey.</em>
+      </h2>
+      <p>Share your preferences. No booking is confirmed online.</p>
+      <Button href={bookingHref}>Request a Booking</Button>
+    </Container>
+  </section>
+</BaseLayout>
+<script>
+  import '../../scripts/reveal';
+</script>

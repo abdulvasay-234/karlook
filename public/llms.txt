@@ -1,0 +1,24 @@
+# karLook
+
+karLook is a Melbourne-based premium chauffeur and private transfer brand.
+Services and geographic coverage are proposed and have not been confirmed.
+Vehicle examples are illustrative, not confirmed fleet inventory.
+Enquiries are not yet open; future requests require manual confirmation.
+Contact details and pricing will be published when verified.
+
+## Proposed services
+
+- [Melbourne Airport transfers](./services/airport-transfers/)
+- [Corporate chauffeur](./services/corporate-chauffeur/)
+- [Hourly chauffeur hire](./services/hourly-chauffeur/)
+- [Point-to-point transfers](./services/point-to-point/)
+- [Wedding transportation](./services/wedding-transportation/)
+- [Group transfers](./services/group-transfers/)
+- [Long-distance transfers](./services/long-distance-transfers/)
+
+## More information
+
+- [Illustrative vehicle collection](./fleet/)
+- [Proposed Melbourne destinations](./destinations/)
+- [Frequently asked questions](./faq/)
+- [Contact information](./contact/)

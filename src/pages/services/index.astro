@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DiscoveryHero from '../../components/common/DiscoveryHero.astro';
+import StructuredData from '../../components/common/StructuredData.astro';
+import Container from '../../components/common/Container.astro';
+import ServiceCard from '../../components/services/ServiceCard.astro';
+import { publishedServices } from '../../data/services';
+import { breadcrumbSchema } from '../../lib/seo/structured';
+import { pathFor } from '../../lib/paths';
+import '../../styles/home.css';
+import '../../styles/fleet.css';
+import '../../styles/discovery.css';
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services/' },
+];
+---
+
+<BaseLayout
+  title="Chauffeur Services Melbourne"
+  description="Explore proposed airport, corporate, hourly and private chauffeur journeys in Melbourne."
+  image="/images/chauffeur-hero.jpg"
+>
+  <StructuredData data={breadcrumbSchema(Astro.site, crumbs)} />
+  <DiscoveryHero
+    image="/images/chauffeur-hero.jpg"
+    alt="Illustrative luxury sedan"
+    eyebrow="THE KARLOOK EXPERIENCE"
+    title="More than a journey. A better way to travel."
+    description="From airport arrivals to executive travel, discover chauffeur experiences shaped around your journey."
+    bookingHref={pathFor('/booking/')}
+    crumbs={[{ name: 'Home', href: '/' }, { name: 'Services' }]}
+  />
+  <section class="discovery-section">
+    <Container>
+      <div class="discovery-heading" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> TRAVEL, ON YOUR TERMS
+          </p>
+          <h2>
+            For the journeys
+            <br />
+            <em>that matter.</em>
+          </h2>
+        </div>
+        <p>
+          From a single arrival to a day with several destinations, every
+          itinerary starts with your plans.
+        </p>
+      </div>
+      <p class="discovery-note">
+        Services are proposed. Availability, conditions and arrangements are
+        subject to confirmation.
+      </p>
+      <div class="discovery-grid">
+        {publishedServices.map((service, index) => (
+          <ServiceCard service={service} index={index} />
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+<script>
+  import '../../scripts/reveal';
+</script>

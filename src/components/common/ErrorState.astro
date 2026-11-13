@@ -1,0 +1,10 @@
+---
+interface Props {
+  message?: string;
+}
+const { message = 'Something went wrong. Please try again.' } = Astro.props;
+---
+
+<div class="state" role="alert">
+  {message}
+</div>

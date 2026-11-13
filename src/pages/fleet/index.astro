@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/common/Container.astro';
+import Button from '../../components/common/Button.astro';
+import FleetExplorer from '../../components/fleet/FleetExplorer';
+import { publishedVehicles } from '../../data/vehicles';
+import { pathFor } from '../../lib/paths';
+import { imageAttributes } from '../../lib/images';
+import StructuredData from '../../components/common/StructuredData.astro';
+import { breadcrumbSchema } from '../../lib/seo/structured';
+import '../../styles/home.css';
+import '../../styles/fleet.css';
+
+const collection = publishedVehicles.map((vehicle) => ({
+  ...vehicle,
+  imageUrl: pathFor(vehicle.heroImage),
+  detailHref: pathFor(`/fleet/${vehicle.slug}/`),
+  requestHref: `${pathFor('/booking/')}?vehicle=${encodeURIComponent(vehicle.id)}`,
+}));
+---
+
+<BaseLayout
+  title="Chauffeur Fleet Melbourne"
+  description="Discover an illustrative collection of chauffeur vehicles for journeys around Melbourne."
+  image="/images/chauffeur-hero.jpg"
+>
+  <StructuredData
+    data={breadcrumbSchema(Astro.site, [
+      { name: 'Home', href: '/' },
+      { name: 'Our Fleet', href: '/fleet/' },
+    ])}
+  />
+  <section class="fleet-hero">
+    <img
+      {...imageAttributes(pathFor('/images/chauffeur-hero.jpg'))}
+      alt="Illustrative luxury sedan"
+      fetchpriority="high"
+      sizes="100vw"
+    />
+    <div class="fleet-hero-shade"></div>
+    <Container class="fleet-hero-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={pathFor('/')}>Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Our Fleet</span>
+      </nav>
+      <p class="eyebrow hero-eyebrow">
+        <span></span> THE KARLOOK COLLECTION
+      </p>
+      <h1>
+        A vehicle for
+        <br />
+        <em>every journey.</em>
+      </h1>
+      <p>
+        Discover a considered collection of vehicles for business, leisure and
+        everything in between.
+      </p>
+      <Button href={pathFor('/booking/')}>Request a Booking</Button>
+    </Container>
+    <div class="fleet-hero-caption container">
+      MELBOURNE / AUSTRALIA <span>THE COLLECTION &#8595;</span>
+    </div>
+  </section>
+  <section class="collection-section">
+    <Container>
+      <div class="collection-intro" data-reveal="up">
+        <div>
+          <p class="eyebrow dark-eyebrow">
+            <span></span> THE COLLECTION
+          </p>
+          <h2>
+            Travel, thoughtfully
+            <br />
+            <em>considered.</em>
+          </h2>
+        </div>
+        <p>
+          From a quiet moment between meetings to a shared arrival, find a
+          little more room for the journey.
+        </p>
+      </div>
+      <p class="fleet-disclaimer">
+        Illustrative vehicles, images, capacities and features only. Actual
+        inventory, specifications and availability have not been confirmed.
+      </p>
+      <FleetExplorer vehicles={collection} client:load />
+    </Container>
+  </section>
+</BaseLayout>
+<script>
+  import '../../scripts/reveal';
+</script>

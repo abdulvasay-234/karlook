@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/common/Button.astro';
+import Container from '../components/common/Container.astro';
+import { pages } from '../data/pages';
+import { business, displayAddress } from '../data/site';
+import { faqs } from '../data/home';
+import DiscoveryFaq from '../components/common/DiscoveryFaq.astro';
+import StructuredData from '../components/common/StructuredData.astro';
+import { breadcrumbSchema } from '../lib/seo/structured';
+import '../styles/home.css';
+import { pathFor } from '../lib/paths';
+
+export function getStaticPaths() {
+  return pages
+    .filter(
+      (page) =>
+        !['fleet', 'services', 'destinations', 'booking'].includes(page.slug),
+    )
+    .map((page) => ({
+      params: { slug: page.slug },
+      props: { page },
+    }));
+}
+const { page } = Astro.props;
+const backHome = ['booking', 'contact', 'faq'].includes(page.slug);
+const { phone, email, whatsapp } = business.contact;
+const address = displayAddress();
+const hasContact = Boolean(phone || email || whatsapp || address);
+---
+
+<BaseLayout
+  title={
+    page.slug === 'faq'
+      ? 'Chauffeur Booking Questions'
+      : page.slug === 'about'
+        ? 'About Our Melbourne Chauffeur Brand'
+        : page.slug === 'contact'
+          ? 'Contact and Enquiry Information'
+          : page.slug.charAt(0).toUpperCase() + page.slug.slice(1)
+  }
+  description={page.description}
+>
+  <StructuredData
+    data={breadcrumbSchema(Astro.site, [
+      { name: 'Home', href: '/' },
+      {
+        name:
+          page.slug === 'faq'
+            ? 'FAQ'
+            : page.slug.charAt(0).toUpperCase() + page.slug.slice(1),
+        href: `/${page.slug}/`,
+      },
+    ])}
+  />
+  <section class="interior-hero">
+    <Container>
+      <nav class="interior-breadcrumb" aria-label="Breadcrumb">
+        <a href={pathFor('/')}>Home</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">
+          {page.slug === 'faq'
+            ? 'FAQ'
+            : page.slug.charAt(0).toUpperCase() + page.slug.slice(1)}
+        </span>
+      </nav>
+      <p class="eyebrow hero-eyebrow">
+        <span></span> {page.eyebrow}
+      </p>
+      <h1>{page.title}</h1>
+      <p class="interior-location">MELBOURNE, AUSTRALIA</p>
+    </Container>
+  </section>
+  <section class="interior-content section-pad">
+    <Container class="interior-grid">
+      <div>
+        <p class="eyebrow dark-eyebrow">
+          <span></span> KARLOOK
+        </p>
+      </div>
+      <div>
+        <p class="interior-body">
+          {page.slug === 'contact' && hasContact
+            ? 'We would love to hear about your next journey.'
+            : page.body}
+        </p>
+        {page.slug === 'faq' && <DiscoveryFaq faqs={faqs} />}
+        {page.slug === 'contact' && hasContact && (
+          <div class="contact-details">
+            {phone && (
+              <a href={`tel:${phone.replace(/[^+\d]/g, '')}`}>{phone}</a>
+            )}
+            {email && <a href={`mailto:${email}`}>{email}</a>}
+            {whatsapp && (
+              <a href={`https://wa.me/${whatsapp.replace(/\D/g, '')}`}>
+                WhatsApp &#8599;
+              </a>
+            )}
+            {address && <p>{address}</p>}
+          </div>
+        )}
+        <Button
+          href={
+            page.slug === 'booking'
+              ? `${pathFor('/')}#plan`
+              : pathFor(backHome ? '/' : '/booking/')
+          }
+          variant="secondary"
+        >
+          {page.slug === 'booking' ? 'Plan your journey' : page.linkLabel}
+        </Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

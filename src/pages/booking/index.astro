@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookingApp from '../../components/booking/BookingApp';
+import '../../styles/booking.css';
+---
+
+<BaseLayout
+  title="Booking Enquiry"
+  description="Plan a chauffeur journey and prepare a karLook booking enquiry."
+  robots="noindex, follow"
+>
+  <BookingApp client:load />
+  <noscript>
+    <section class="interior-content section-pad">
+      <div class="container">
+        JavaScript is required to use the booking planner.
+      </div>
+    </section>
+  </noscript>
+</BaseLayout>

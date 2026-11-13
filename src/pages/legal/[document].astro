@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/common/Container.astro';
+import Button from '../../components/common/Button.astro';
+import { pathFor } from '../../lib/paths';
+export function getStaticPaths() {
+  return [
+    { params: { document: 'privacy' }, props: { title: 'Privacy' } },
+    { params: { document: 'terms' }, props: { title: 'Terms' } },
+  ];
+}
+const { title } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={`${title} information for karLook.`}
+  robots="noindex, follow"
+>
+  <section class="interior-hero">
+    <Container>
+      <p class="eyebrow hero-eyebrow">
+        <span></span> KARLOOK
+      </p>
+      <h1>{title}</h1>
+    </Container>
+  </section>
+  <section class="interior-content section-pad">
+    <Container>
+      <p class="interior-body">
+        This information is being prepared and will be published before
+        enquiries open.
+      </p>
+      <Button href={pathFor('/')} variant="secondary">
+        Return home
+      </Button>
+    </Container>
+  </section>
+</BaseLayout>
