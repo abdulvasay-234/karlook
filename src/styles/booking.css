@@ -31,7 +31,7 @@
   border-left: 2px solid #a3814f;
   background: #ede8dd;
   color: #4e514c;
-  font-size: 13px;
+  font-size: 14px;
 }
 .wizard-mobile-summary {
   display: none;
@@ -90,14 +90,14 @@
   flex: none;
   border: 1px solid #c9c4ba;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 12px;
 }
 .wizard-progress button[aria-current='step'] > span {
   border-color: #9c8058;
   background: #e8dcc9;
 }
 .wizard-progress strong {
-  font-size: 11px;
+  font-size: 12px;
   white-space: nowrap;
 }
 .wizard-layout {
@@ -127,7 +127,7 @@
 }
 .wizard-kicker {
   color: #8e7653;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   margin: 0;
 }
@@ -193,11 +193,11 @@
   gap: 5px;
 }
 .wizard-journeys strong {
-  font-size: 12px;
+  font-size: 13px;
 }
 .wizard-journeys small {
   color: #6d726e;
-  font-size: 11px;
+  font-size: 12px;
 }
 .wizard-radio-mark {
   margin-left: auto;
@@ -225,30 +225,30 @@
   min-width: 0;
 }
 .wizard-field > span {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
 }
 .location-field { position: relative; }
-.location-field > label { font-size: 11px; font-weight: 800; }
+.location-field > label { font-size: 12px; font-weight: 800; }
 .location-input-wrap { position: relative; }
 .location-input-wrap input { padding-right: 42px; }
 .location-clear { position: absolute; right: 4px; top: 4px; width: 40px; height: 40px; display: grid; place-items: center; border: 0; background: transparent; color: #565d58; cursor: pointer; }
 .location-results { position: absolute; z-index: 8; top: 75px; left: 0; right: 0; max-height: 240px; overflow-y: auto; margin: 0; padding: 0; border: 1px solid #d4d2cc; background: #fff; box-shadow: 0 12px 25px #1011141a; list-style: none; }
-.location-results li { padding: 11px 12px; border-bottom: 1px solid #eceae4; font-size: 12px; cursor: pointer; }
+.location-results li { padding: 11px 12px; border-bottom: 1px solid #eceae4; font-size: 13px; cursor: pointer; }
 .location-results li[aria-selected='true'], .location-results li:hover { background: #f0ece3; }
-.route-stops-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 12px; font-size: 11px; }
-.route-stops-heading button, .route-remove, .route-status button { padding: 0; border: 0; background: none; text-decoration: underline; text-underline-offset: 4px; font-size: 11px; font-weight: 700; cursor: pointer; }
+.route-stops-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 12px; font-size: 12px; }
+.route-stops-heading button, .route-remove, .route-status button { padding: 0; border: 0; background: none; text-decoration: underline; text-underline-offset: 4px; font-size: 12px; font-weight: 700; cursor: pointer; }
 .route-stops-heading button:disabled { opacity: .5; cursor: not-allowed; }
 .route-stop { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px; margin-top: 12px; }
-.route-status { padding: 14px 0 0; border-top: 1px solid #d5d2cb; color: #616763; font-size: 12px; }
+.route-status { padding: 14px 0 0; border-top: 1px solid #d5d2cb; color: #616763; font-size: 14px; }
 .route-status p { margin: 0 0 10px; }
-.route-demo-label { color: #805a24 !important; font-size: 11px; font-weight: 800; }
+.route-demo-label { color: #805a24 !important; font-size: 12px; font-weight: 800; }
 .fare-estimate { margin: 20px 0; padding-top: 16px; border-top: 1px solid #d5d2cb; }
 .fare-estimate .wizard-kicker { margin-bottom: 10px; }
-.fare-route, .fare-vehicle { color: #101114; font-size: 12px; font-weight: 700; overflow-wrap: anywhere; }
-.fare-metrics, .fare-copy { color: #5e655f; font-size: 12px; line-height: 1.7; }
+.fare-route, .fare-vehicle { color: #101114; font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+.fare-metrics, .fare-copy { color: #5e655f; font-size: 14px; line-height: 1.7; }
 .fare-lines { margin: 14px 0; }
-.fare-lines div { display: flex; justify-content: space-between; gap: 15px; padding: 8px 0; border-bottom: 1px solid #d5d2cb; font-size: 11px; }
+.fare-lines div { display: flex; justify-content: space-between; gap: 15px; padding: 8px 0; border-bottom: 1px solid #d5d2cb; font-size: 12px; }
 .fare-lines dd { margin: 0; white-space: nowrap; }
 .fare-total { color: #101114; font-weight: 800; }
 .vehicle-estimate { color: #765a31 !important; font-weight: 800; }
@@ -264,7 +264,7 @@
   background: #fff;
   color: #101114;
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
 }
 .wizard-field textarea {
   min-height: 88px;
@@ -281,13 +281,13 @@
 }
 .wizard-field small {
   color: #6b706c;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 .wizard-field .wizard-field-error,
 .wizard-field-error {
   color: #a12c32;
-  font-size: 11px;
+  font-size: 12px;
   margin: 0;
 }
 .wizard-wide {
@@ -297,7 +297,7 @@
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  font-size: 12px;
+  font-size: 13px;
 }
 .wizard-checkbox input {
   width: 17px;
@@ -343,11 +343,11 @@
 }
 .wizard-no-preference strong,
 .wizard-vehicle strong {
-  font-size: 13px;
+  font-size: 14px;
 }
 .wizard-no-preference small,
 .wizard-vehicle small {
-  font-size: 11px;
+  font-size: 12px;
   color: #666c68;
 }
 .wizard-vehicle img {
@@ -361,14 +361,14 @@
   gap: 5px;
   align-items: center;
   margin-top: 7px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .wizard-notice {
   padding: 16px 18px;
   border-left: 2px solid #b39466;
   background: #efede7;
   color: #4f5551;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
 }
 .wizard-alert {
@@ -376,7 +376,7 @@
   border-left: 2px solid #a12c32;
   background: #f7e9e7;
   color: #87252a;
-  font-size: 12px;
+  font-size: 14px;
   margin: 20px 0;
 }
 .wizard-actions {
@@ -398,7 +398,7 @@
   min-height: 50px;
   border: 0;
   padding: 0 20px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   cursor: pointer;
 }
@@ -446,7 +446,7 @@
 }
 .wizard-sidebar > p:not(.wizard-kicker) {
   color: #696e6a;
-  font-size: 11px;
+  font-size: 14px;
 }
 .review-list {
   margin: 0 0 20px;
@@ -457,7 +457,7 @@
   gap: 15px;
   padding: 10px 0;
   border-bottom: 1px solid #d6d3cb;
-  font-size: 11px;
+  font-size: 12px;
 }
 .review-list dt {
   color: #727772;
@@ -490,12 +490,12 @@
   background: none;
   text-decoration: underline;
   text-underline-offset: 4px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
 .wizard-review section > p {
-  font-size: 13px;
+  font-size: 14px;
   color: #5d645e;
   margin: 0;
 }
@@ -537,7 +537,7 @@
   margin-top: 12px;
   text-decoration: underline;
   text-underline-offset: 4px;
-  font-size: 12px;
+  font-size: 13px;
 }
 .booking-takeover {
   position: fixed;
@@ -570,7 +570,7 @@
   border: 0;
   color: white;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
 }
 .booking-overlay-header button span {
@@ -597,7 +597,7 @@
     gap: 20px;
     padding: 18px 0;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     list-style: none;
   }

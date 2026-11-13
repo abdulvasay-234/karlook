@@ -109,7 +109,7 @@ button {
 }
 .desktop-nav a {
   position: relative;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -136,7 +136,7 @@ button {
   gap: 34px;
   background: var(--gold);
   color: var(--black);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   transition:
     background 0.2s,
@@ -297,7 +297,7 @@ h2 em {
   align-items: center;
   gap: 28px;
   padding-bottom: 8px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   border-bottom: 1px solid;
 }
@@ -320,7 +320,7 @@ h2 em {
   align-items: center;
   justify-content: space-between;
   color: #eee;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
 }
 .hero-scroll span {
@@ -344,7 +344,7 @@ h2 em {
 }
 .section-number {
   margin-top: 55px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   color: #8c8a83;
 }
@@ -471,7 +471,7 @@ h2 em {
 .footer-label {
   color: #bca47d;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   margin-bottom: 20px;
 }
@@ -486,7 +486,7 @@ h2 em {
 }
 .footer-column > p:not(.footer-label) {
   color: #c1c2c0;
-  font-size: 13px;
+  font-size: 14px;
 }
 .footer-column > a {
   display: block;
@@ -500,7 +500,7 @@ h2 em {
   padding-block: 22px;
   border-top: 1px solid #ffffff20;
   color: #a0a29f;
-  font-size: 10px;
+  font-size: 12px;
 }
 .interior-hero {
   padding: 190px 0 85px;
@@ -513,7 +513,7 @@ h2 em {
   gap: 10px;
   margin-bottom: 30px;
   color: #e4e0d9;
-  font-size: 10px;
+  font-size: 12px;
 }
 .interior-breadcrumb a {
   text-decoration: underline;
@@ -527,7 +527,7 @@ h2 em {
 .interior-location {
   margin: 0;
   color: #c7c9c4;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
 }
 .interior-grid {
