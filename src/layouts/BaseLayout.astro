@@ -22,8 +22,9 @@ const {
 } = Astro.props;
 const robots = Astro.site ? requestedRobots : 'noindex, nofollow';
 const seo = seoFor(title, description, Astro.url.pathname, Astro.site);
-const socialImage = Astro.site
-  ? new URL(pathFor(image), Astro.site).href
+const socialOrigin = Astro.site ?? import.meta.env.PUBLIC_SHARE_ORIGIN;
+const socialImage = socialOrigin
+  ? new URL(pathFor(image), socialOrigin).href
   : undefined;
 const googleVerification =
   import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || '';

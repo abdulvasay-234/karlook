@@ -54,7 +54,7 @@ Service pages use `src/data/services.ts` and `src/data/service-faqs.ts`. Service
 
 ## Site URL and base path
 
-Set `PUBLIC_SITE_URL` only after a real custom domain is verified, to its HTTPS **origin** without a path. GitHub Pages preview origins, localhost and IP addresses are rejected. Set `ASTRO_BASE` to `/` for the custom domain or user/organisation site, or `/repository-name/` for a project site. Without the production origin, pages are `noindex, nofollow`, canonical and social image URLs are omitted, and no sitemap is generated. Both values are build-time variables, not secrets. For a local test build only, export an example origin in the shell:
+Set `PUBLIC_SITE_URL` only after a real custom domain is verified, to its HTTPS **origin** without a path. GitHub Pages preview origins, localhost and IP addresses are rejected. Set `ASTRO_BASE` to `/` for the custom domain or user/organisation site, or `/repository-name/` for a project site. Without the production origin, pages are `noindex, nofollow`, canonical URLs are omitted, and no sitemap is generated. The GitHub Pages workflow supplies its deployment origin only for absolute Open Graph and Twitter image URLs; this does not change canonical or indexing behavior. Unconfigured local builds omit social image URLs unless `PUBLIC_SHARE_ORIGIN` is supplied. Both origin variables are build-time values, not secrets. For a local test build only, export an example origin in the shell:
 
 ```sh
 PUBLIC_SITE_URL=https://example.com ASTRO_BASE=/repository-name/ npm run build

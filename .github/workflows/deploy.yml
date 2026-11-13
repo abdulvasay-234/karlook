@@ -33,6 +33,7 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+          PUBLIC_SHARE_ORIGIN: ${{ steps.pages.outputs.origin }}
           ASTRO_BASE: ${{ vars.ASTRO_BASE || steps.pages.outputs.base_path || '/' }}
           PUBLIC_BOOKING_API_URL: ${{ vars.PUBLIC_BOOKING_API_URL }}
           PUBLIC_ROUTE_API_URL: ${{ vars.PUBLIC_ROUTE_API_URL }}

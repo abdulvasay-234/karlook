@@ -16,7 +16,7 @@
   margin: 0;
   max-width: 580px;
   color: #d3d8d1;
-  font-size: 13px;
+  font-size: 14px;
 }
 .booking-intro .button {
   margin-top: 24px;
@@ -31,7 +31,7 @@
   border-left: 2px solid #a3814f;
   background: #ede8dd;
   color: #4e514c;
-  font-size: 12px;
+  font-size: 13px;
 }
 .wizard-mobile-summary {
   display: none;
@@ -141,7 +141,7 @@
 .wizard-lead {
   max-width: 570px;
   color: #666c68;
-  font-size: 13px;
+  font-size: 14px;
   margin: 0 0 30px;
 }
 .wizard-journeys {
@@ -240,13 +240,13 @@
 .route-stops-heading button, .route-remove, .route-status button { padding: 0; border: 0; background: none; text-decoration: underline; text-underline-offset: 4px; font-size: 11px; font-weight: 700; cursor: pointer; }
 .route-stops-heading button:disabled { opacity: .5; cursor: not-allowed; }
 .route-stop { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px; margin-top: 12px; }
-.route-status { padding: 14px 0 0; border-top: 1px solid #d5d2cb; color: #616763; font-size: 11px; }
+.route-status { padding: 14px 0 0; border-top: 1px solid #d5d2cb; color: #616763; font-size: 12px; }
 .route-status p { margin: 0 0 10px; }
 .route-demo-label { color: #805a24 !important; font-size: 11px; font-weight: 800; }
 .fare-estimate { margin: 20px 0; padding-top: 16px; border-top: 1px solid #d5d2cb; }
 .fare-estimate .wizard-kicker { margin-bottom: 10px; }
 .fare-route, .fare-vehicle { color: #101114; font-size: 12px; font-weight: 700; overflow-wrap: anywhere; }
-.fare-metrics, .fare-copy { color: #5e655f; font-size: 11px; line-height: 1.7; }
+.fare-metrics, .fare-copy { color: #5e655f; font-size: 12px; line-height: 1.7; }
 .fare-lines { margin: 14px 0; }
 .fare-lines div { display: flex; justify-content: space-between; gap: 15px; padding: 8px 0; border-bottom: 1px solid #d5d2cb; font-size: 11px; }
 .fare-lines dd { margin: 0; white-space: nowrap; }
@@ -495,7 +495,7 @@
   cursor: pointer;
 }
 .wizard-review section > p {
-  font-size: 12px;
+  font-size: 13px;
   color: #5d645e;
   margin: 0;
 }
@@ -526,7 +526,7 @@
 }
 .acknowledgement p {
   color: #666c68;
-  font-size: 13px;
+  font-size: 14px;
 }
 .acknowledgement aside {
   border-top: 1px solid #bfa984;

@@ -56,12 +56,12 @@
 .discovery-heading > div:last-child:not(:first-child) {
   max-width: 310px;
   color: #676b68;
-  font-size: 13px;
+  font-size: 14px;
 }
 .discovery-note {
   margin: 0 0 24px;
   color: #666b69;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
 }
 .discovery-grid {
@@ -110,7 +110,7 @@
 .discovery-card-info > p:not(.discovery-card-index) {
   max-width: 500px;
   color: #666b69;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 .discovery-card-info > .text-link {
@@ -179,7 +179,7 @@
 }
 .discovery-band-grid > div:last-child > p:not(.eyebrow) {
   color: #cdd1cb;
-  font-size: 12px;
+  font-size: 13px;
 }
 .feature-list {
   list-style: none;
@@ -215,7 +215,7 @@
   max-width: 300px;
   margin: 20px 0 0;
   color: #606563;
-  font-size: 13px;
+  font-size: 14px;
 }
 .discovery-fleet {
   background: #eeece6;

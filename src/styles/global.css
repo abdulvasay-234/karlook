@@ -30,7 +30,7 @@ body {
   background: var(--ivory);
   color: var(--black);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
 }
 img {
@@ -283,7 +283,7 @@ h2 em {
   font-size: 84px;
 }
 .hero-copy {
-  font-size: 15px;
+  font-size: 16px;
   color: #f0eeea;
 }
 .hero-actions {
@@ -466,7 +466,7 @@ h2 em {
 .footer-brand p {
   margin: 25px 0 0;
   color: #9c9e9e;
-  font-size: 13px;
+  font-size: 14px;
 }
 .footer-label {
   color: #bca47d;
@@ -480,10 +480,13 @@ h2 em {
   flex-direction: column;
   gap: 8px;
 }
-.footer-column a,
-.footer-column > p:not(.footer-label) {
+.footer-column a {
   color: #c1c2c0;
   font-size: 12px;
+}
+.footer-column > p:not(.footer-label) {
+  color: #c1c2c0;
+  font-size: 13px;
 }
 .footer-column > a {
   display: block;
