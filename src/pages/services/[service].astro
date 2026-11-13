@@ -56,9 +56,6 @@ const areas = destinations.filter((item) =>
   <DiscoveryHero
     image={service.heroImage}
     alt={service.heroAlt}
-    eyebrow={
-      service.verified ? 'CHAUFFEUR SERVICE' : 'PROPOSED CHAUFFEUR SERVICE'
-    }
     title={service.headline}
     description={service.description}
     bookingHref={bookingHref}
@@ -77,9 +74,6 @@ const areas = destinations.filter((item) =>
   <section class="discovery-section discovery-intro">
     <Container class="discovery-split">
       <div data-reveal="up">
-        <p class="eyebrow dark-eyebrow">
-          <span></span> {service.title.toUpperCase()}
-        </p>
         <h2>{service.introduction}</h2>
       </div>
       <div data-reveal="up">
@@ -108,9 +102,6 @@ const areas = destinations.filter((item) =>
         />
       </div>
       <div data-reveal="up">
-        <p class="eyebrow hero-eyebrow">
-          <span></span> THOUGHTFUL DETAILS
-        </p>
         <h2>
           Considered around
           <br />
@@ -129,9 +120,6 @@ const areas = destinations.filter((item) =>
     <Container>
       <div class="discovery-heading" data-reveal="up">
         <div>
-          <p class="eyebrow dark-eyebrow">
-            <span></span> THE JOURNEY
-          </p>
           <h2>
             From enquiry
             <br />
@@ -154,9 +142,6 @@ const areas = destinations.filter((item) =>
     <Container>
       <div class="discovery-heading" data-reveal="up">
         <div>
-          <p class="eyebrow dark-eyebrow">
-            <span></span> VEHICLE PREFERENCES
-          </p>
           <h2>
             Space for
             <br />
@@ -192,9 +177,6 @@ const areas = destinations.filter((item) =>
   <section class="discovery-section discovery-faq">
     <Container class="faq-grid">
       <div data-reveal="left">
-        <p class="eyebrow dark-eyebrow">
-          <span></span> GOOD TO KNOW
-        </p>
         <h2>
           Questions,
           <br />
@@ -209,9 +191,6 @@ const areas = destinations.filter((item) =>
     <Container>
       <div class="discovery-heading" data-reveal="up">
         <div>
-          <p class="eyebrow dark-eyebrow">
-            <span></span> EXPLORE MORE
-          </p>
           <h2>
             More ways
             <br />
@@ -238,9 +217,6 @@ const areas = destinations.filter((item) =>
   </section>
   <section class="discovery-cta">
     <Container data-reveal="up">
-      <p class="eyebrow hero-eyebrow">
-        <span></span> THE JOURNEY AHEAD
-      </p>
       <h2>
         Let's plan
         <br />

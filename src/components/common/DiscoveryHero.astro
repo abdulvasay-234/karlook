@@ -6,7 +6,6 @@ import { imageAttributes } from '../../lib/images';
 interface Props {
   image: string;
   alt: string;
-  eyebrow: string;
   title: string;
   description: string;
   bookingHref: string;
@@ -16,7 +15,6 @@ interface Props {
 const {
   image,
   alt,
-  eyebrow,
   title,
   description,
   bookingHref,
@@ -46,9 +44,6 @@ const {
         </>
       ))}
     </nav>
-    <p class="eyebrow hero-eyebrow">
-      <span></span> {eyebrow}
-    </p>
     <h1>{title}</h1>
     <p>{description}</p>
     <Button href={bookingHref}>{cta}</Button>

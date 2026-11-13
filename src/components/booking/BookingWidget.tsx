@@ -242,7 +242,6 @@ export default function BookingWidget({
         <fieldset className="booking-widget-fields" disabled={!ready}>
           <div className="booking-heading">
             <div>
-              <p className="booking-kicker">YOUR JOURNEY STARTS HERE</p>
               <h2>Where are you headed?</h2>
             </div>
             <p>Plan the details of your journey.</p>

@@ -491,9 +491,6 @@ export default function BookingApp({
       <div className="booking-app">
         <div className="booking-intro">
           <div className="container">
-            <p className="eyebrow hero-eyebrow">
-              <span></span> KARLOOK
-            </p>
             <h1>
               {confirmationOnly
                 ? 'Enquiry acknowledgement.'
@@ -512,9 +509,6 @@ export default function BookingApp({
         >
           <div className="booking-intro">
             <div className="container">
-              <p className="eyebrow hero-eyebrow">
-                <span></span> KARLOOK
-              </p>
               <h1>No enquiry to display.</h1>
               <p>
                 Acknowledgement details are only available immediately after an
@@ -535,12 +529,6 @@ export default function BookingApp({
       <div className={`booking-app ${embedded ? 'booking-app--embedded' : ''}`}>
         <div className="booking-intro">
           <div className="container">
-            <p className="eyebrow hero-eyebrow">
-              <span></span>{' '}
-              {receipt.status === 'simulated'
-                ? 'DEVELOPMENT SIMULATION'
-                : 'ENQUIRY RECEIVED'}
-            </p>
             <h1 tabIndex={-1} ref={heading}>
               {receipt.status === 'simulated'
                 ? 'Simulation complete.'
@@ -693,9 +681,6 @@ export default function BookingApp({
       )}
       <div className="booking-intro">
         <div className="container">
-          <p className="eyebrow hero-eyebrow">
-            <span></span> PRIVATE CHAUFFEUR / MELBOURNE
-          </p>
           <h1>Plan your journey.</h1>
           <p>
             An enquiry, thoughtfully arranged. Requests require manual review

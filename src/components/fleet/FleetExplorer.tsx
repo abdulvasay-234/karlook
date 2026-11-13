@@ -134,9 +134,6 @@ export default function FleetExplorer({
       >
         <div className="comparison-heading">
           <div>
-            <p className="eyebrow dark-eyebrow">
-              <span></span> FIND YOUR FIT
-            </p>
             <h2 id="compare-heading">Compare the collection.</h2>
           </div>
           <p>

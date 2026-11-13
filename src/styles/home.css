@@ -61,7 +61,7 @@
 }
 .home-hero h1 {
   max-width: 860px;
-  margin: 25px 0 24px;
+  margin: 0 0 24px;
   font-size: 72px;
 }
 .home-hero-content > p:not(.eyebrow) {
@@ -137,7 +137,6 @@
   color: #777b83;
   font-size: 12px;
 }
-.booking-kicker,
 .card-kicker {
   color: #8e7653;
   font-size: 9px;
@@ -391,6 +390,9 @@
 .final-cta h2 {
   font-size: 51px;
   margin: 22px 0 0;
+}
+.home-heading h2 {
+  margin-top: 0;
 }
 .home-heading > div:last-child,
 .home-heading > p {

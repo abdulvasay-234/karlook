@@ -64,20 +64,12 @@ const hasContact = Boolean(phone || email || whatsapp || address);
             : page.slug.charAt(0).toUpperCase() + page.slug.slice(1)}
         </span>
       </nav>
-      <p class="eyebrow hero-eyebrow">
-        <span></span> {page.eyebrow}
-      </p>
       <h1>{page.title}</h1>
       <p class="interior-location">MELBOURNE, AUSTRALIA</p>
     </Container>
   </section>
   <section class="interior-content section-pad">
     <Container class="interior-grid">
-      <div>
-        <p class="eyebrow dark-eyebrow">
-          <span></span> KARLOOK
-        </p>
-      </div>
       <div>
         <p class="interior-body">
           {page.slug === 'contact' && hasContact

@@ -529,8 +529,7 @@ h2 em {
 }
 .interior-grid {
   display: grid;
-  grid-template-columns: 1fr 1.55fr;
-  gap: 50px;
+  grid-template-columns: minmax(0, 1fr);
 }
 .interior-body {
   max-width: 650px;

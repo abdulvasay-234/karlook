@@ -39,6 +39,10 @@
   font-size: 70px;
   max-width: 760px;
 }
+.fleet-hero h1,
+.collection-intro h2 {
+  margin-top: 0;
+}
 .fleet-hero-content > p:not(.eyebrow),
 .vehicle-hero-content > p:not(.eyebrow) {
   max-width: 470px;
@@ -589,9 +593,6 @@
   .fleet-hero h1,
   .vehicle-hero h1 {
     font-size: 43px;
-  }
-  .fleet-hero-caption span {
-    display: none;
   }
   .collection-section,
   .fleet-detail-section {
